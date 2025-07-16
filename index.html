@@ -2,89 +2,454 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mark Gad | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      min-height: 120vh;
+      padding-top: 70px; 
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      padding: 1em 2em;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+      z-index: 999;
+      text-align: right;
+    }
+
+    nav a {
+      display: inline-block;
+      margin-left: 1em;
+      text-decoration: none;
+      color: #2b2b2b;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e76f51;
+    }
+
+    .hero {
+      display: flex;
+      height: 100vh;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .hero-left, .hero-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2em;
+    }
+
+    .hero-left {
+      background: none;
+      position: relative;
+    }
+
+    .hero-left img.profile-photo {
+      width: 100%;
+      max-width: 400px;
+      height: 800px;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      transform: translateY(-40px);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      z-index: 1;
+    }
+
+    .hero-left img.profile-photo:hover {
+      transform: translateY(-50px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-right {
+      flex-direction: column;
+      text-align: left;
+      max-width: 600px;
+      margin-left: 2rem;
+    }
+
+    .hero-right h1 {
+      font-size: 2.8em;
+      margin-bottom: 0.5em;
+      color: #e76f51;
+    }
+
+    .hero-right p {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+      line-height: 1.6;
+    }
+
+    .hero-buttons .btn {
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      margin-right: 1em;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #2a9d8f;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .hero-buttons .btn.secondary {
+      background-color: #f4a261;
+    }
+
+    .hero-buttons .btn:hover {
+      transform: translateY(-3px);
+      background-color: #e76f51;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4em 2em;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -10px;
+      left: 0;
+      background: linear-gradient(to right, transparent, #e76f51, transparent);
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 2em;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    input, textarea {
+      padding: 0.7em;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 0.75em 1.5em;
+      border: none;
+      border-radius: 30px;
+      background: #2a9d8f;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #e76f51;
+    }
+
+    .icon {
+      width: 28px;
+      height: 28px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5em;
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+
+    .skill-item {
+      background: #f8f8f8;
+      border-radius: 12px;
+      padding: 1em 1.5em;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+      font-size: 1.05em;
+    }
+
+    .skill-item progress {
+      width: 100px;
+      height: 12px;
+      accent-color: #2a9d8f;
+      background: #e0e0e0;
+      border-radius: 6px;
+      margin: 0 0.5em;
+    }
+
+    .skill-score {
+      font-weight: 600;
+      color: #e76f51;
+      min-width: 40px;
+      text-align: right;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 3em;
+      text-align: left;
+    }
+
+    .contact-social, .contact-form {
+      flex: 1 1 320px;
+      max-width: 400px;
+      min-width: 260px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      padding: 2em 1.5em;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(44,62,80,0.07);
+      padding: 2em 1.5em 1.5em 1.5em;
+      text-align: left;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 320px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+    }
+
+    .project-icon img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1em;
+      filter: drop-shadow(0 2px 6px rgba(44,62,80,0.08));
+    }
+
+    .project-card h3 {
+      margin: 0 0 0.5em 0;
+      color: #2a9d8f;
+      font-size: 1.3em;
+    }
+
+    .project-card p {
+      color: #555;
+      font-size: 1.05em;
+      margin-bottom: 0;
+    }
+  </style>
 </head>
 <body>
-
-  <header>
-    <div class="container">
-      <h1>Mark Gad</h1>
-      <p>Software Engineer | Web Developer | AI Enthusiast</p>
-    </div>
-  </header>
-
-  <nav class="navbar">
+  <nav>
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact & Socials</a>
   </nav>
 
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I’m a passionate software engineer with experience in full-stack development, mobile applications, and AI integration. I love turning ideas into real-world solutions.</p>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="card">
-        <h3>RemmvaTech Solutions</h3>
-        <p><em>ERP Developer</em> – 2024–Present</p>
-        <p>Built and maintained MongoDB-powered ERP systems with integrated analytics and workflow automation.</p>
-      </div>
-      <div class="card">
-        <h3>Freelancer</h3>
-        <p><em>Web & Mobile Developer</em> – 2022–2024</p>
-        <p>Worked on diverse projects from small business websites to mobile apps using React Native and Firebase.</p>
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="tags">
-        <span>HTML</span><span>CSS</span>
-       <span>MongoDB</span>
-        <span>Java</span><span>Python</span>
-        <span>Git</span><span>C++</span>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="card">
-       
-      <div class="card">
-        <h3>Recipe Menu – Palate Pioneers</h3>
-        <p>A clean, responsive recipe menu website with filtering and category-based navigation.</p>
+  <section class="hero">
+    <div class="hero-left">
+      <img src="profile.jpg" alt="Mark Gad" class="profile-photo" onerror="this.src='https://via.placeholder.com/300'" />
+    </div>
+    <div class="hero-right">
+      <div>
+        <h1>Hi, I'm Mark Gad</h1>
         <p>
+  I’m a results-driven Software Engineer with a passion for building full-stack applications that blend functionality with creativity. From intelligent ERP systems to AI-powered chatbots and scalable mobile solutions, I bring ideas to life through clean, efficient code. My mission? To craft innovative digital tools that solve real-world problems and deliver lasting impact.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="MARK GAD ANNAN CV.pdf" class="btn">View My CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" data-aos="fade-right">
+    <div class="section-container">
+      <h2>About My Portfolio</h2>
+ <p>This portfolio showcases my skills in web development and AI-powered applications. It features selected projects that demonstrate problem-solving, creativity, and clean design. From ERP systems to Android apps, I build solutions that matter.</p>
+    
+    <p>I take pride in building applications that are not only functional but also user-friendly and visually appealing. My projects are rooted in real-world problems and are designed with scalability, maintainability, and performance in mind.</p>
+    
+    <p>In this portfolio, you'll find a selection of my most impactful work, including intelligent systems that utilize AI/ML models, responsive front-end interfaces, and robust backend APIs. Whether it's automating workflows, managing data, or enhancing user experiences, each project reflects my commitment to quality and innovation.</p>
+
+    <p>Through continuous learning and hands-on experimentation, I stay up to date with modern development practices, ensuring that the solutions I build are aligned with current technology trends.</p>    </div>
+  </section>
+
+  <section id="projects" data-aos="fade-up">
+  <div class="section-container">
+    <h2>Projects</h2>
+    <p>Here are three key projects that demonstrate my technical skills and problem-solving abilities:</p>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+        </div>
+        <h3>Smart ERP System</h3>
+        <p>
+          Developed a robust ERP solution using Java and MongoDB for managing inventory, HR, and finance operations within small and medium enterprises.
         </p>
       </div>
-    </section>
+      <div class="project-card">
+        <div class="project-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+        </div>
+        <h3>AI-Powered Chatbot</h3>
+        <p>
+          Built a natural language processing chatbot to automate customer support, featuring contextual memory, language detection, and live integration with support agents.
+        </p>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" />
+        </div>
+        <h3>Mobile Disaster Reporting App</h3>
+        <p>
+          Designed a mobile application for field users to report disasters in real time with GPS tracking, offline capabilities, and integration with a centralized dashboard.
+        </p>
+      </div>
+    </div>
+    <p style="margin-top:2em;">These projects are part of a growing portfolio that reflects my dedication to solving real-world challenges through software.</p>
+  </div>
+</section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <p>Bachelor of Science in Computer Science – The Co-operative University of Kenya</p>
-    </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p><strong>Email:</strong> gadmark22@gmail.com</p>
-      <p><strong>Phone:</strong> +254 719375039</p>
+ <section id="skills" data-aos="fade-up">
+  <div class="section-container">
+    <h2>Skills</h2>
+    <p>Here’s a summary of my technical skills and proficiency:</p>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <span><strong>HTML &amp; CSS</strong></span>
+        <progress value="9" max="10"></progress>
+        <span class="skill-score">9/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>JavaScript</strong></span>
+        <progress value="8" max="10"></progress>
+        <span class="skill-score">8/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>Java (Spring Boot)</strong></span>
+        <progress value="8" max="10"></progress>
+        <span class="skill-score">8/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>Python</strong></span>
+        <progress value="7" max="10"></progress>
+        <span class="skill-score">7/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>MongoDB</strong></span>
+        <progress value="8" max="10"></progress>
+        <span class="skill-score">8/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>Firebase</strong></span>
+        <progress value="7" max="10"></progress>
+        <span class="skill-score">7/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>React</strong></span>
+        <progress value="7" max="10"></progress>
+        <span class="skill-score">7/10</span>
+      </div>
+      <div class="skill-item">
+        <span><strong>Android Development</strong></span>
+        <progress value="6" max="10"></progress>
+        <span class="skill-score">6/10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <section id="contact" data-aos="fade-up">
+  <div class="section-container contact-container">
+    
+    <div class="contact-social">
+      <h2>Contact Me</h2>
       <p>
-        <strong>Socials:</strong><br />
-        <a href="https://github.com/Mark-Gad" target="_blank">GitHub</a> 
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="icon">
+        <a href="https://github.com/Mark-Gad" target="_blank">GitHub</a>
       </p>
-    </section>
-  </main>
+      <p>
+        <img src="phone.png" alt="Phone" class="icon">
+        +254 719375039
+      </p>
+      <p>
+        <img src="email.png" alt="Email" class="icon">
+        <a href="mailto:gadmark22@gmail.com">gadmark22@gmail.com</a>
+      </p>
+    </div>
 
-  <footer>
-    <p>© 2025 Mark Ayieko. All rights reserved.</p>
-  </footer>
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <form>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
 
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+        <input type="submit" value="Send" class="btn">
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, easing: 'ease-in-out' });</script>
 </body>
 </html>
