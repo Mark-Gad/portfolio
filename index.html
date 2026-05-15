@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mark Gad | Portfolio</title>
+  <title>Mark Gad | Data Analyst & Software Engineer</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
+    /* Global Styles */
     body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #2b2b2b;
       min-height: 120vh;
       padding-top: 70px; 
     }
@@ -54,46 +59,42 @@
       padding: 2em;
     }
 
-    .hero-left {
-      background: none;
-      position: relative;
-    }
-
     .hero-left img.profile-photo {
       width: 100%;
       max-width: 400px;
-      height: 800px;
+      height: auto; /* Fixed proportions */
       border-radius: 20px;
       object-fit: cover;
-      object-position: center;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
       transform: translateY(-40px);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       z-index: 1;
     }
 
-    .hero-left img.profile-photo:hover {
-      transform: translateY(-50px);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-    }
-
     .hero-right {
       flex-direction: column;
       text-align: left;
       max-width: 600px;
-      margin-left: 2rem;
     }
 
     .hero-right h1 {
       font-size: 2.8em;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.1em;
       color: #e76f51;
     }
 
+    .tagline {
+      font-weight: 600;
+      color: #2a9d8f;
+      font-size: 1.3em;
+      margin-bottom: 1em;
+    }
+
     .hero-right p {
-      font-size: 1.2em;
+      font-size: 1.1em;
       margin-bottom: 1.5em;
       line-height: 1.6;
+      color: #555;
     }
 
     .hero-buttons .btn {
@@ -141,56 +142,11 @@
       background: linear-gradient(to right, transparent, #e76f51, transparent);
     }
 
-    p {
-      font-size: 1.1em;
-      margin-bottom: 2em;
-      line-height: 1.6;
-      color: #555;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    input, textarea {
-      padding: 0.7em;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-
-    button {
-      padding: 0.75em 1.5em;
-      border: none;
-      border-radius: 30px;
-      background: #2a9d8f;
-      color: #fff;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #e76f51;
-    }
-
-    .icon {
-      width: 28px;
-      height: 28px;
-      vertical-align: middle;
-      margin-right: 8px;
-    }
-
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5em;
       margin-top: 2em;
-      margin-bottom: 2em;
     }
 
     .skill-item {
@@ -201,87 +157,33 @@
       align-items: center;
       gap: 1em;
       box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
-      font-size: 1.05em;
     }
 
     .skill-item progress {
-      width: 100px;
-      height: 12px;
+      width: 80px;
       accent-color: #2a9d8f;
-      background: #e0e0e0;
-      border-radius: 6px;
-      margin: 0 0.5em;
-    }
-
-    .skill-score {
-      font-weight: 600;
-      color: #e76f51;
-      min-width: 40px;
-      text-align: right;
-    }
-
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 3em;
-      text-align: left;
-    }
-
-    .contact-social, .contact-form {
-      flex: 1 1 320px;
-      max-width: 400px;
-      min-width: 260px;
-      background: #f8f8f8;
-      border-radius: 12px;
-      padding: 2em 1.5em;
-      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.05);
     }
 
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 2em;
-      margin-top: 2em;
+      gap: 2rem;
     }
 
     .project-card {
       background: #fff;
       border-radius: 14px;
       box-shadow: 0 4px 18px rgba(44,62,80,0.07);
-      padding: 2em 1.5em 1.5em 1.5em;
+      padding: 2em;
       text-align: left;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-height: 320px;
+      transition: transform 0.3s;
     }
 
     .project-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 8px 32px rgba(44,62,80,0.13);
+      transform: translateY(-8px);
     }
 
-    .project-icon img {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 1em;
-      filter: drop-shadow(0 2px 6px rgba(44,62,80,0.08));
-    }
-
-    .project-card h3 {
-      margin: 0 0 0.5em 0;
-      color: #2a9d8f;
-      font-size: 1.3em;
-    }
-
-    .project-card p {
-      color: #555;
-      font-size: 1.05em;
-      margin-bottom: 0;
-    }
+    .icon { width: 24px; height: 24px; vertical-align: middle; margin-right: 8px; }
   </style>
 </head>
 <body>
@@ -289,165 +191,79 @@
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#contact">Contact & Socials</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <section class="hero">
     <div class="hero-left">
-      <img src="profile.jpg" alt="Mark Gad" class="profile-photo" onerror="this.src='https://via.placeholder.com/300'" />
+      <img src="profile.jpg" alt="Mark Gad" class="profile-photo" onerror="this.src='https://via.placeholder.com/400'" />
     </div>
     <div class="hero-right">
-      <div>
-        <h1>Hi, I'm Mark Gad</h1>
-        <p>
-  I’m a results-driven Software Engineer with a passion for building full-stack applications that blend functionality with creativity. From intelligent ERP systems to AI-powered chatbots and scalable mobile solutions, I bring ideas to life through clean, efficient code. My mission? To craft innovative digital tools that solve real-world problems and deliver lasting impact.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="MARK GAD ANNAN CV.pdf" class="btn">View My CV</a>
-        </div>
+      <h1>Hi, I'm Mark Gad</h1>
+      <div class="tagline">Data Analyst & Software Engineer</div>
+      <p>
+        I bridge the gap between technical architecture and data-driven insights. With a foundation in Software Engineering and specialized training in Data Analytics via ALX, I build systems that capture data and narratives that interpret it to solve real-world problems.
+      </p>
+      <div class="hero-buttons">
+        <a href="MARK GAD ANNAN CV.pdf" class="btn">View My CV</a>
+        <a href="#projects" class="btn secondary">View Projects</a>
       </div>
     </div>
   </section>
 
   <section id="about" data-aos="fade-right">
     <div class="section-container">
-      <h2>About My Portfolio</h2>
- <p>This portfolio showcases my skills in web development and AI-powered applications. It features selected projects that demonstrate problem-solving, creativity, and clean design. From ERP systems to Android apps, I build solutions that matter.</p>
-    
-    <p>I take pride in building applications that are not only functional but also user-friendly and visually appealing. My projects are rooted in real-world problems and are designed with scalability, maintainability, and performance in mind.</p>
-    
-    <p>In this portfolio, you'll find a selection of my most impactful work, including intelligent systems that utilize AI/ML models, responsive front-end interfaces, and robust backend APIs. Whether it's automating workflows, managing data, or enhancing user experiences, each project reflects my commitment to quality and innovation.</p>
-
-    <p>Through continuous learning and hands-on experimentation, I stay up to date with modern development practices, ensuring that the solutions I build are aligned with current technology trends.</p>    </div>
+      <h2>Professional Narrative</h2>
+      <p>I specialize in building functional, scalable applications and extracting actionable intelligence from complex datasets. My background in full-stack development allows me to understand the end-to-end lifecycle of data, from initial capture to final visualization.</p>
+      <p>Currently focused on leveraging SQL, R, and Tableau to drive operational performance and efficiency, particularly within the supply chain and environmental sectors.</p>
+    </div>
   </section>
 
   <section id="projects" data-aos="fade-up">
-  <div class="section-container">
-    <h2>Projects</h2>
-    <p>Here are three key projects that demonstrate my technical skills and problem-solving abilities:</p>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-icon">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+    <div class="section-container">
+      <h2>Key Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Smart ERP System</h3>
+          <p>Developed an inventory and HR management solution using Java and MongoDB, optimizing operational workflows for SMEs.</p>
         </div>
-        <h3>Smart ERP System</h3>
-        <p>
-          Developed a robust ERP solution using Java and MongoDB for managing inventory, HR, and finance operations within small and medium enterprises.
-        </p>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+        <div class="project-card">
+          <h3>Data Analytics Research</h3>
+          <p>Analyzing green supply chain practices to determine their effect on the operational performance of textile firms in Nairobi.</p>
         </div>
-        <h3>AI-Powered Chatbot</h3>
-        <p>
-          Built a natural language processing chatbot to automate customer support, featuring contextual memory, language detection, and live integration with support agents.
-        </p>
-      </div>
-      <div class="project-card">
-        <div class="project-icon">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" />
+        <div class="project-card">
+          <h3>Hospital Management System</h3>
+          <p>A full-stack web application designed for streamlined patient data management and robust backend reporting.</p>
         </div>
-        <h3>Mobile Disaster Reporting App</h3>
-        <p>
-          Designed a mobile application for field users to report disasters in real time with GPS tracking, offline capabilities, and integration with a centralized dashboard.
-        </p>
       </div>
     </div>
-    <p style="margin-top:2em;">These projects are part of a growing portfolio that reflects my dedication to solving real-world challenges through software.</p>
-  </div>
-</section>
+  </section>
 
-
- <section id="skills" data-aos="fade-up">
-  <div class="section-container">
-    <h2>Skills</h2>
-    <p>Here’s a summary of my technical skills and proficiency:</p>
-    <div class="skills-grid">
-      <div class="skill-item">
-        <span><strong>HTML &amp; CSS</strong></span>
-        <progress value="9" max="10"></progress>
-        <span class="skill-score">9/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>JavaScript</strong></span>
-        <progress value="8" max="10"></progress>
-        <span class="skill-score">8/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>Java (Spring Boot)</strong></span>
-        <progress value="8" max="10"></progress>
-        <span class="skill-score">8/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>Python</strong></span>
-        <progress value="7" max="10"></progress>
-        <span class="skill-score">7/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>MongoDB</strong></span>
-        <progress value="8" max="10"></progress>
-        <span class="skill-score">8/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>Firebase</strong></span>
-        <progress value="7" max="10"></progress>
-        <span class="skill-score">7/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>React</strong></span>
-        <progress value="7" max="10"></progress>
-        <span class="skill-score">7/10</span>
-      </div>
-      <div class="skill-item">
-        <span><strong>Android Development</strong></span>
-        <progress value="6" max="10"></progress>
-        <span class="skill-score">6/10</span>
+  <section id="skills" data-aos="fade-up">
+    <div class="section-container">
+      <h2>Technical Arsenal</h2>
+      <div class="skills-grid">
+        <div class="skill-item"><span><strong>SQL & Databases</strong></span><progress value="8" max="10"></progress></div>
+        <div class="skill-item"><span><strong>Tableau (Viz)</strong></span><progress value="7" max="10"></progress></div>
+        <div class="skill-item"><span><strong>R (Statistics)</strong></span><progress value="6" max="10"></progress></div>
+        <div class="skill-item"><span><strong>Java / Python</strong></span><progress value="8" max="10"></progress></div>
+        <div class="skill-item"><span><strong>JavaScript / React</strong></span><progress value="8" max="10"></progress></div>
+        <div class="skill-item"><span><strong>HTML & CSS</strong></span><progress value="9" max="10"></progress></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
- <section id="contact" data-aos="fade-up">
-  <div class="section-container contact-container">
-    
-    <div class="contact-social">
-      <h2>Contact Me</h2>
-      <p>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="icon">
-        <a href="https://github.com/Mark-Gad" target="_blank">GitHub</a>
-      </p>
-      <p>
-        <img src="phone.png" alt="Phone" class="icon">
-        +254 719375039
-      </p>
-      <p>
-        <img src="email.png" alt="Email" class="icon">
-        <a href="mailto:gadmark22@gmail.com">gadmark22@gmail.com</a>
-      </p>
+  <section id="contact" data-aos="fade-up">
+    <div class="section-container">
+      <h2>Let's Connect</h2>
+      <p>Interested in collaborating on a data-driven project or a software solution?</p>
+      <div style="display: flex; justify-content: center; gap: 2em;">
+        <a href="https://github.com/Mark-Gad" target="_blank" style="text-decoration:none; color:#2b2b2b;">GitHub</a>
+        <a href="mailto:gadmark22@gmail.com" style="text-decoration:none; color:#2b2b2b;">Email</a>
+        <span>+254 719375039</span>
+      </div>
     </div>
-
-    <div class="contact-form">
-      <h2>Send a Message</h2>
-      <form>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name" required><br>
-
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="5" required></textarea><br><br>
-
-        <input type="submit" value="Send" class="btn">
-      </form>
-    </div>
-
-  </div>
-</section>
-
+  </section>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ duration: 800, easing: 'ease-in-out' });</script>
