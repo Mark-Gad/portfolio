@@ -7,6 +7,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <style>
+    /* Elevator Pitch Styles */
+    .pitch-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+      text-align: left;
+      margin-top: 2rem;
+    }
+
+    .pitch-video, .pitch-text {
+      flex: 1 1 450px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pitch-text h3 {
+      color: #e76f51;
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .pitch-text p {
+      text-align: left;
+      font-size: 1.05em;
+      margin-bottom: 1rem;
+    }
     /* Global Styles */
     body {
       font-family: 'Poppins', sans-serif;
@@ -189,6 +231,7 @@
 <body>
   <nav>
     <a href="#about">About</a>
+    <a href="#pitch">Pitch</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
@@ -196,7 +239,7 @@
 
   <section class="hero">
     <div class="hero-left">
-      <img src="profile.jpg" alt="Mark Gad" class="profile-photo" onerror="this.src='https://via.placeholder.com/400'" />
+      <img src="profile.jpeg" alt="Mark Gad" class="profile-photo" onerror="this.src='https://via.placeholder.com/400'" />
     </div>
     <div class="hero-right">
       <h1>Hi, I'm Mark Gad</h1>
@@ -216,6 +259,38 @@
       <h2>Professional Narrative</h2>
       <p>I specialize in building functional, scalable applications and extracting actionable intelligence from complex datasets. My background in full-stack development allows me to understand the end-to-end lifecycle of data, from initial capture to final visualization.</p>
       <p>Currently focused on leveraging SQL, R, and Tableau to drive operational performance and efficiency, particularly within the supply chain and environmental sectors.</p>
+    </div>
+  </section>
+  <section id="pitch" data-aos="fade-up">
+    <div class="section-container">
+      <h2>Elevator Pitch</h2>
+      <p>A quick look into who I am, what I build, and where I am heading.</p>
+      
+      <div class="pitch-container">
+        <div class="pitch-video">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                    title="Mark Gad Elevator Pitch" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe >
+          </div>
+        </div>
+
+        <div class="pitch-text">
+          <h3>The Core Pitch</h3>
+          <p>
+            Hi, I'm <strong>Mark Gad</strong>. I bridge the gap between technical software architecture and data-driven insights. With a foundation in Software Engineering and specialized training via ALX, I spent the last few months mastering tools like SQL, R, and Tableau.
+          </p>
+          <p>
+            What makes me unique is my end-to-end data perspective. I don't just build systems that capture information; I build the analytical frameworks that interpret it to solve real-world problems. 
+          </p>
+          <p>
+            Moving forward, my goal is to apply predictive modeling and clear data tracking to optimize operations within the <strong>Sustainable Tourism</strong> and hospitality sectors, transforming complex data points into viable economic opportunities.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
